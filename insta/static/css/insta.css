@@ -1,0 +1,11 @@
+body {
+    backgound-color: #ffff;
+}
+header {
+    backgound-color: #FAFAFA;
+}
+
+.navigation div {
+    display: inline-block;
+
+}
