@@ -3,34 +3,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home insta</title>
-    <link rel="stylesheet" href="static/css/insta.css">
+    
+    <!-- <link rel="stylesheet" href="static/css/insta.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{% static 'css/insta.css' %}">
+    <title>{% block title%}{% endblock %}</title>
 </head>
 <body>
     <header>
         <div class="navigation">
             <div class="instalogo">
-                <a href="/">
-                    <span>
-                        <a href="Home.html"><i class="fab fa-instagram"></i> </a>
-                    </span>
-                    <span>
-                        <h2>Instagrampy</h2>
-                    </span>
-                </a>
+                <a href="Home.html"><i class="fab fa-instagram"></i> </a>
+                <a class="vl"></a>
+                <a href="">Instagrampy</a>
             </div>
             <div class="search_bar">
-                <a href="search"></a>
+                <input type="text" placeholder="Search">
+                <a href="search"><i class="fas fa-search"></i></a>
             </div>
-            <div>
-                <a href="explore"> <i class="fab fa-wpexplorer"></i></a>
+            <div class="contact_icons">
+                <a href="explore"><i class="far fa-compass"></i></a>
                 <a href="likes"> <i class="far fa-heart"></i> </a>
                 <a href="profile"> <i class="far fa-user"></i> </a>
             </div>
         </div>
     </header>
+    <div class="content-container">
+        {% block content %}
+        {%endblock%}
+
+    </div>
 </body>
 </html>

@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Instagrampy</title>
-</head>
-<body>
+{% extends 'insta/base.html' %}
+{%block title%} Instagrampy {% endblock %}
 
-</body>
-</html>
+{% block content %}
+{% for post in posts %}
+    <div class="card">
+        <div class="card_header">
+            <div class="profile_image">
+                
+            </div>
+            <div class="post_info">
+                <div class="post_name">{{ post.author }}</div>
+                <div class="post_location">Kuala Lumpure</div>
+            </div>
+            <div class="post_options"><a href=""><i class="fas fa-ellipsis-h"></i></a></div>
+        </div>
+        <div class="post_image">
+            {% if post.image != None %}
+                <img src="media/Hi_instagram_STLw1dr.png" alt="Photo">
+            {% endif %}
+        </div>
+        <div class="engagement">
+            <a href=""><i class="fas fa-heart"></i></a>
+            <a href=""><i class="far fa-comment"></i></a>
+            <a href=""><i class="far fa-share-square"></i></a>
+            <a href=""><i class="far fa-bookmark"></i></a>
+        </div>
+        <div class="likes">
+          <a href="#">310 likes</a>
+        </div>
+        <div class="caption">
+            <a href=""><h2>{{ post.author }}</h2></a>
+            <span><p>{{ post.caption }}</p></span>
+        </div>
+
+        <div class="time_posted">
+            {{post.published_date}}
+        </div>
+
+    </div>
+
+{% endfor %}
+{% endblock %}
