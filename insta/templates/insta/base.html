@@ -3,9 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+
     <!-- <link rel="stylesheet" href="static/css/insta.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/insta.css' %}">
@@ -15,9 +16,9 @@
     <header>
         <div class="navigation">
             <div class="instalogo">
-                <a href="Home.html"><i class="fab fa-instagram"></i> </a>
+                <a href="{% url 'insta:post_list' %}"><i class="fab fa-instagram"></i> </a>
                 <a class="vl"></a>
-                <a href="">Instagrampy</a>
+                <a href="/">Instagrampy</a>
             </div>
             <div class="search_bar">
                 <input type="text" placeholder="Search">
@@ -30,7 +31,7 @@
             </div>
         </div>
     </header>
-    <div class="content-container">
+    <div class="container content-container">
         {% block content %}
         {%endblock%}
 

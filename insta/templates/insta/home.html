@@ -15,26 +15,26 @@
             <div class="post_options"><a href=""><i class="fas fa-ellipsis-h"></i></a></div>
         </div>
         <div class="post_image">
-            {% if post.image != None %}
-                <img src="media/Hi_instagram_STLw1dr.png" alt="Photo">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Photo">
             {% endif %}
         </div>
         <div class="engagement">
             <a href=""><i class="fas fa-heart"></i></a>
-            <a href=""><i class="far fa-comment"></i></a>
+            <a href="{% url 'insta:post_detail' post.id %}"><i class="far fa-comment"></i></a>
             <a href=""><i class="far fa-share-square"></i></a>
-            <a href=""><i class="far fa-bookmark"></i></a>
+            <a href="" class="fa-bookmarks"><i class="far fa-bookmark"></i></a>
         </div>
         <div class="likes">
-          <a href="#">310 likes</a>
+          <a href="#">{{ post.likes.count }} likes</a>
         </div>
         <div class="caption">
             <a href=""><h2>{{ post.author }}</h2></a>
-            <span><p>{{ post.caption }}</p></span>
+            <span><p>{{ post.caption | linebreaksbr | truncatechars:60 }}</p></span>
         </div>
 
         <div class="time_posted">
-            {{post.published_date}}
+            {{post.created_date | timesince}} ago
         </div>
 
     </div>

@@ -10,8 +10,8 @@ header{
     top: 0;
     width:100%;
     z-index: 50;
-    
-    
+
+
 }
 
 
@@ -48,6 +48,7 @@ header{
     display: flex;
     justify-content: flex-end;
     width: 30%;
+    padding-left: 100px;
 }
 .contact_icons a{
     padding-left: 30px;
@@ -65,7 +66,7 @@ header{
     font-size:14px;
     text-align:center;
     position: absolute;
-    
+
 }
 .search_bar a{
     font-size: 25px;
@@ -78,11 +79,11 @@ header{
     width: 100%;
     top:83px;
     left:0;
-   
+
 }
 
 .card{
-    background-color: #fff; 
+    background-color: #fff;
     margin: 0 auto;
     width: 614px;
     height: auto;
@@ -92,6 +93,10 @@ header{
 }
 .card_header{
     padding: 15px;
+}
+.card_header a{
+    text-decoration: none;
+    color: black;
 }
 .profile_image{
     display: inline-block;
@@ -136,7 +141,7 @@ header{
 .post_image img{
     width: 100%;
     height: 614px;
-    
+
 }
 
 .engagement{
@@ -152,7 +157,7 @@ header{
     color: slategray;
     font-weight: 600;
 }
-.fa-bookmark{
+.fa-bookmarks{
     float: right;
     margin-right: 25px;
 }
@@ -169,6 +174,8 @@ header{
     display: inline-block;
     width: 100%;
     padding: 0px 16px;
+    margin-right: 16px;
+
 }
 .caption a{
     font-size: 10px;
@@ -185,6 +192,8 @@ header{
     font-weight: 500;
     color: #111;
     display: inline-block;
+    margin-right: 16px;
+
 }
 .caption h2 p{
     padding: 0;
@@ -195,5 +204,60 @@ header{
     font-size: 10px;
     font-weight: 300;
     color: #111;
-    padding: 0px 21px;
+    letter-spacing: .2px;
+    padding: 0px 16px;
+    text-transform: uppercase;
+}
+
+.detail_card{
+    background-color: #fff;
+    margin: 0 auto;
+    width: 949px;
+    height: auto;
+    border: 1px solid #cccc;
+    border-radius: 3px;
+}
+.detail_image{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* position: absolute; */
+    display: inline-block;
+    /* float: left; */
+}
+.detail_image img{
+    width: 614px;
+    height: auto;
+}
+.post_detail_info{
+    display: inline-block;
+    float: right;
+    width: 335px;
+    height: 100%;
+
+}
+.detail_bottom{
+    position: absolute;
+    /* width: 100%; */
+    bottom: 0;
+}
+
+.text_comment_area{
+    background: 0 0;
+    border: 0;
+    color: #262626;
+    height: 18px;
+    padding: 0;
+    outline: 0;
+    width: 260.8px;
+}
+.new_comment_section{
+    height: 54px;
+    widows: 335px;
+    justify-content: center;
+    font-size: 14px;
+    border-top: 1px solid #efefef;
+    margin-top: 4px;
+    padding: 0 16px;
 }
