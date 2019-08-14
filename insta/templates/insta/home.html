@@ -12,7 +12,7 @@
                 <div class="post_name">{{ post.author }}</div>
                 <div class="post_location">Kuala Lumpure</div>
             </div>
-            <div class="post_options"><a href=""><i class="fas fa-ellipsis-h"></i></a></div>
+            <div class="post_options"> <button data-toggle="modal" data-target="#menu_modal" ><a ><i class="fas fa-ellipsis-h"></i></a></button></div>
         </div>
         <div class="post_image">
             {% if post.image %}
@@ -38,6 +38,6 @@
         </div>
 
     </div>
-
+    {% include "insta/menu_modal.html" %}
 {% endfor %}
 {% endblock %}

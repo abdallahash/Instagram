@@ -138,6 +138,31 @@ header{
     padding: 5px;
     color: #cccc;
 }
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  /*   padding: 10px; */
+    width:300px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .menu li{
+    background-color: transparent;
+    cursor: pointer;
+    padding: 8px 8px;
+    border-top: 1px solid #efefef;
+    line-height: 1.5;
+  }
+  .menu li a{
+    text-decoration: none;
+  }
+
 .post_image img{
     width: 100%;
     height: 614px;
