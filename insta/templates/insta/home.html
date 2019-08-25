@@ -12,8 +12,23 @@
                 <div class="post_name">{{ post.author }}</div>
                 <div class="post_location">Kuala Lumpure</div>
             </div>
+        
             <div class="post_options"> <button data-toggle="modal" data-target="#menu_modal" ><a ><i class="fas fa-ellipsis-h"></i></a></button></div>
         </div>
+        
+        <div class="modal" id="menu_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <ul class='list-unstyled menu'>
+                        <li><a class="text-reset" href="{% url 'insta:post_update' post.id %}">Edit</a></li>
+                        <li><a class="text-reset" href="{% url 'insta:post_delete' post.id %}">Delete</a></li>
+                        <li><a class="text-reset" href="{% url 'insta:post_detail' post.id %}">Details</a></li>
+                        <li><a class="text-reset close" data-dismiss="modal" href="">Cancel</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
         <div class="post_image">
             {% if post.image %}
                 <img src="{{ post.image.url }}" alt="Photo">

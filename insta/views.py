@@ -42,7 +42,7 @@ class PostUpdateView(UpdateView):
     form_class = PostForm 
 
     def get_object(self):
-        id_ = self.kwargs.get('id')
+        id_ = self.kwargs.get("id")
         return get_object_or_404(Post, id=id_)
 
         def form_valid(self, form):
@@ -53,7 +53,7 @@ class PostDeleteView(DeleteView):
     template_name = 'insta/delete.html'
 
     def get_object(self):
-        id_=self.kwargs.get('id')
+        id_=self.kwargs.get("id")
         return get_object_or_404(Post, id=id_)
 
     def get_success_url(self):

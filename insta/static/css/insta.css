@@ -1,3 +1,16 @@
+
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
 body {
     background-color: #ffff;
 }
@@ -93,6 +106,11 @@ header{
 }
 .card_header{
     padding: 15px;
+    width: 100%;
+    /* position: absolute; */
+    top: 0px;
+    left: 0px;    
+    z-index: 1;
 }
 .card_header a{
     text-decoration: none;
@@ -138,29 +156,51 @@ header{
     padding: 5px;
     color: #cccc;
 }
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
 
+.modal-content{
+    margin-top: 320px;
+    margin: 0 auto;
+    width:400px;
+}
 .menu{
     display: flex;
     flex-direction: column;
     text-decoration: none;
   /*   padding: 10px; */
-    width:300px;
-    border: 1px solid #ccc;
+    border: 1px solid Transparent;
     text-align: center;
     border-radius: 10px;
-    background-color: transparent;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-  .menu li{
-    background-color: transparent;
+    background-color: #FAFAFA;
+    width: 100%;
+}
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+button :hover{
+    border: none;
+}
+
+.menu li{
+    /* background-color: transparent; */
     cursor: pointer;
     padding: 8px 8px;
     border-top: 1px solid #efefef;
     line-height: 1.5;
+    height: 48px;
   }
-  .menu li a{
+.menu li a{
     text-decoration: none;
+    color: #111;
   }
 
 .post_image img{
@@ -241,6 +281,7 @@ header{
     height: auto;
     border: 1px solid #cccc;
     border-radius: 3px;
+    /* z-index: 2; */
 }
 .detail_image{
     bottom: 0;
@@ -259,13 +300,17 @@ header{
     display: inline-block;
     float: right;
     width: 335px;
-    height: 100%;
+    height: inherit;
+    position: absolute;
+    z-index: 3;
 
 }
 .detail_bottom{
-    position: absolute;
-    /* width: 100%; */
-    bottom: 0;
+    position: fixed;
+    width: 100%;
+    bottom: 20px;
+    /* z-index: 2; */
+    height: 150px;
 }
 
 .text_comment_area{
@@ -279,10 +324,12 @@ header{
 }
 .new_comment_section{
     height: 54px;
-    widows: 335px;
+    widows: 300px;
     justify-content: center;
     font-size: 14px;
     border-top: 1px solid #efefef;
     margin-top: 4px;
     padding: 0 16px;
+    position: fixed;
+    /* width: 300px; */
 }
