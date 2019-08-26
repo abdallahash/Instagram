@@ -333,3 +333,10 @@ button :hover{
     position: fixed;
     /* width: 300px; */
 }
+.content-section{
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    width: 650px;
+    border-radius: 5px;
+    padding: 10px;
+}
