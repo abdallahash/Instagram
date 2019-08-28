@@ -14,6 +14,7 @@ urlpatterns = [
     path('new/', PostCreateView.as_view(), name='post_new'),
     path('<int:id>/update/', PostUpdateView.as_view(), name='post_update'),
     path('<int:id>/delete/', PostDeleteView.as_view(), name='post_delete'),
+    # path('api_upload/', FileView.as_view(), name='file-upload')
 ]
 
 
