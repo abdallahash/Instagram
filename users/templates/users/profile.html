@@ -1,4 +1,14 @@
 {% extends 'insta/base.html' %}
 {% block content %}
-    <h2>{{ user.username }}</h2>
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.profile_photo.url }}" alt="">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.profile.name }}</p>
+                <p class="text-secondary">{{ user.profile.bio }}</p>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

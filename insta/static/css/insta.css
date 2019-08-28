@@ -340,3 +340,10 @@ button :hover{
     border-radius: 5px;
     padding: 10px;
 }
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
