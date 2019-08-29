@@ -35,8 +35,9 @@ class Profile(DetailView):
     queryset = User.objects.all()
 
     def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(User, id=id_)
+        id_ = self.kwargs.get("username")
+        print("No id or Id",id_)
+        return get_object_or_404(User, username=id_)
 
 def edit_profile(request):
     if request.method == "POST":
