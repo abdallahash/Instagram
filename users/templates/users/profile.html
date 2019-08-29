@@ -1,12 +1,27 @@
 {% extends 'insta/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
+    <div class="profile_page">
         <div class="media">
-            <img class="rounded-circle account-img" src="{{ user.profile.profile_photo.url }}" alt="">
+            <div>
+                <img class="rounded-circle account-img" src="{{ user.profile.profile_photo.url }}" alt="">
+            </div>
             <div class="media-body">
-                <h2 class="account-heading">{{ user.username }}</h2>
-                <p class="text-secondary">{{ user.profile.name }}</p>
-                <p class="text-secondary">{{ user.profile.bio }}</p>
+                <div class="account-heading">
+                    <h2 >{{ user.username }}</h2>
+                    <button type="button"><a href="{% url 'edit_profile' %}">Edit profile</a></button>
+                    <button><i class="fas fa-cog"></i></button>
+                </div>
+                <div class="profile_media">
+                    <span class="post_count"> <span class="number_of_posts">45</span> posts </span>
+                    <a href=""> <span class="number_of_followers" >1908 </span> followers</a>
+                    <a href=""> <span class="number_of_follows" >421 </span> follows</a>
+
+                </div>
+                <div class="bio_content">
+                    <p class="profilename">{{ user.profile.name }}</p>
+                    <p class="text-secondary">{{ user.profile.bio|linebreaks }}</p>
+                </div>
 
             </div>
         </div>

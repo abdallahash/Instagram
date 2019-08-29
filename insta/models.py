@@ -6,7 +6,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Post(models.Model):
-    author  = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    author  = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='posts')
     image   = models.ImageField(default='default.png', blank=True)
     caption = models.TextField()
     likes   = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')

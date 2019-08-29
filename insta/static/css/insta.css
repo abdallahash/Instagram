@@ -87,13 +87,14 @@ header{
 }
 .content-container{
     background-color: #FAFAFA;
-    padding-top: 50px;
-    position: absolute;
+    padding-top: 130px;
+    /* position: absolute; */
     width: 100%;
     top:83px;
     left:0;
 
 }
+
 
 .card{
     background-color: #fff;
@@ -105,7 +106,7 @@ header{
     margin-bottom: 60px;
 }
 .card_header{
-    padding: 15px;
+    padding: 10px;
     width: 100%;
     /* position: absolute; */
     top: 0px;
@@ -118,13 +119,17 @@ header{
 }
 .profile_image{
     display: inline-block;
-    background-color: royalblue;
-    height: 30px;
-    width: 30px;
+    /* background-color: royalblue; */
     padding:0;
-    margin:0;
-    border: 0 solid #000;
+    margin:0 auto;
+    /* border: 0 solid #000; */
+}
+
+.profile_image img{
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
+    vertical-align: baseline;
 }
 
 .post_info{
@@ -243,7 +248,7 @@ button :hover{
 
 }
 .caption a{
-    font-size: 10px;
+    font-size: 15px;
     font-weight: bold;
     color: #000;
     text-decoration: none;
@@ -342,8 +347,51 @@ button :hover{
 }
 
 .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
+    height: 150px;
+    width: 150px;
+    margin-right: 90px;
+    margin-left: 75px;
+
     margin-bottom: 16px;
+}
+.account-heading{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0px 20px;
+}
+.account-heading h2{
+    color: #262626;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+    margin: -5px 0 -6px;
+    padding-right: 15px; 
+}
+.profile_media{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 320px;
+    margin: 0px 0px 20px;
+}
+.profile_media a{
+    text-decoration: none;
+    color: #262626;
+
+}
+
+.number_of_posts, .number_of_followers, .number_of_follows, .profilename{
+    color: #262626;
+    font-weight: 600;
+}
+.profilename p{
+    padding: 0px;
+    margin: 0px !important;
+}
+
+.profile_page{
+    max-width: 935px;
+    margin: 0 auto 30px;
+    padding: 60px 20px 0px;
+    box-sizing: content-box;
 }
