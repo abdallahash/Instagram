@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User 
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm 
@@ -37,7 +38,17 @@ class Profile(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("username")
         print("No id or Id",id_)
-        return get_object_or_404(User, username=id_)
+        user = get_object_or_404(User, username=id_)
+        return user 
+    def get_context_data(self, *args, **kwargs):
+        context = super(Profile,self).get_context_data(*args, **kwargs)
+        # user_id = self.kwargs.get('id')
+        # user = get_object_or_404(User,id=user_id)
+        user = self.get_object()
+        context.update({
+            'posts' : user.posts.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
+        })
+        return context 
 
 def edit_profile(request):
     if request.method == "POST":

@@ -25,5 +25,18 @@
 
             </div>
         </div>
+        <br>
+        <div class="profile_options">
+            <button type="button"><i class="far fa-calendar-alt"></i> POSTS</button>
+            <button type="button"><i class="far fa-plus-square"></i> NEW</button>
+            <button type="button"><i class="far fa-bookmark"></i> SAVED</button>
+        </div>
+        <div class="profile_posts">
+            {% for post in posts %}
+            <a href="">
+                <img src="{{ post.image.url }}" alt="">
+            </a>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

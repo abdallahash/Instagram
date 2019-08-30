@@ -395,3 +395,30 @@ button :hover{
     padding: 60px 20px 0px;
     box-sizing: content-box;
 }
+.profile_posts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    border-top: .8px solid #ccc;
+}
+.profile_posts img{
+    height: 293px;
+    width: 293px;
+    margin-bottom: 28px;
+}
+.profile_options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 70px;
+    border: .8px solid rgb(248, 241, 241);
+    width: 100%;
+    height: 50px;
+   
+}
+.profile_options button{
+    /* padding-right: 28px; */
+    align-self: center;
+
+}
