@@ -14,7 +14,7 @@
                 </div>
                 <div class="profile_media">
                     <span class="post_count"> <span class="number_of_posts">{{ user.posts.count }}</span> posts </span>
-                    <a href=""> <span class="number_of_followers" >10m </span> followers</a>
+                    <a href=""> <span class="number_of_followers" >1908 </span> followers</a>
                     <a href=""> <span class="number_of_follows" >421 </span> follows</a>
 
                 </div>
@@ -29,10 +29,10 @@
         <div class="profile_options">
             <button type="button"><i class="far fa-calendar-alt"></i> POSTS</button>
             <a href="{% url 'insta:post_new' %}"><button type="button"><i class="far fa-plus-square"></i> NEW</button></a>
-            <a href="{% url 'insta:saved_posts' %}"><button type="button"><i class="far fa-bookmark"></i> SAVED</button></a>
+            <button type="button"><i class="far fa-bookmark"></i> SAVED</button>
         </div>
         <div class="profile_posts">
-            {% for post in posts %}
+            {% for post in saved_posts %}
             <a href="" class="post_overlay">
                 <i class="far fa-heart hide">{{ post.likes.count }}</i>
                 <i class="far fa-comment hide"></i>

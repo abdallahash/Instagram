@@ -5,6 +5,7 @@ from .views import (
     PostListView,
     PostCreateView,
     PostUpdateView,
+    saved_posts,
 )
 # from django.contrib.auth import views as auth_views
 app_name = 'insta' 
@@ -14,6 +15,7 @@ urlpatterns = [
     path('new/', PostCreateView.as_view(), name='post_new'),
     path('<int:id>/update/', PostUpdateView.as_view(), name='post_update'),
     path('<int:id>/delete/', PostDeleteView.as_view(), name='post_delete'),
+    path('saved/', saved_posts, name='saved_posts'),
     # path('api_upload/', FileView.as_view(), name='file-upload')
 ]
 

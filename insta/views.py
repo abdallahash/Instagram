@@ -59,6 +59,12 @@ class PostDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('insta:post_list')
 
+def saved_posts(request):
+    posts = Post.objects.filter(saved=True)
+    context = {'saved_posts': posts}
+    return render(request, 'insta/saved_posts.html', context) 
+
+
 
 # def post_create_view(request):
 #     if request.method == 'POST':

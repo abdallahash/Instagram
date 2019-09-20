@@ -45,7 +45,7 @@
           <a href="#">{{ post.likes.count }} likes</a>
         </div>
         <div class="caption">
-            <span><p><a href="{% url 'profile' %}">{{ post.author }}</a>{{ post.caption | linebreaksbr | truncatechars:60 }}</p></span>
+            <span><p><a href="{% url 'user_profile' post.author.username %}">{{ post.author }}</a>{{ post.caption | linebreaksbr | truncatechars:60 }}</p></span>
         </div>
 
         <div class="time_posted">
