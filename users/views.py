@@ -26,18 +26,26 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 #The decoratior add functionality to the function is this case the login required functionality
-@login_required
-def profile(request):
+# @login_required
+# def profile(request, user):
+#     print(request.user.profile)
+#     print(type(request.user.profile))
 
-    return render(request, 'users/profile.html')
+
+    # return render(request, 'users/profile.html')
+
 
 class Profile(DetailView):
     template_name = 'users/profile.html'
     queryset = User.objects.all()
+    success_url = '/'
 
     def get_object(self):
         id_ = self.kwargs.get("username")
         user = get_object_or_404(User, username=id_)
+        # print(request.user)
+        # print(user.profile.followed_by.all()[0])
+        # print(type(user.profile.followed_by.all()[0]))
         return user 
         
     def get_context_data(self, *args, **kwargs):
@@ -49,6 +57,9 @@ class Profile(DetailView):
             'posts' : user.posts.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
         })
         return context 
+    def add_follow(self, request):
+        user = self.get_object() 
+        user.profile.followed_by.add(request.user.profile) 
 
 def edit_profile(request):
     if request.method == "POST":

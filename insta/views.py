@@ -7,6 +7,7 @@ from django.views.generic import (
     ListView,
     UpdateView,
     DeleteView,
+    RedirectView,
 )
 from datetime import datetime
 from .models import Post 
@@ -45,9 +46,9 @@ class PostUpdateView(UpdateView):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Post, id=id_)
 
-        def form_valid(self, form):
-            form.instance.author = self.request.user 
-            return super().form_valid(form) 
+    def form_valid(self, form):
+        # form.instance.author = self.request.user      
+        return super().form_valid(form) 
 
 class PostDeleteView(DeleteView):
     template_name = 'insta/delete.html'
@@ -64,7 +65,18 @@ def saved_posts(request):
     context = {'saved_posts': posts}
     return render(request, 'insta/saved_posts.html', context) 
 
-
+class PostLikeToggle(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        id_ = self.kwargs.get("id")
+        obj = get_object_or_404(Post, id=id_)
+        url_ = obj.get_absolute_url()
+        user = self.request.user 
+        if user.is_authenticated:
+            if user in obj.likes.all():
+                obj.likes.remove(user)
+            else:
+                obj.likes.add(user) 
+        return url_ 
 
 # def post_create_view(request):
 #     if request.method == 'POST':

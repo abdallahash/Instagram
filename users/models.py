@@ -9,6 +9,7 @@ class Profile(models.Model):
     profile_photo = models.ImageField(default='default_avatar.jpg', upload_to='profile_pics')
     name = models.CharField(max_length=50)
     bio = models.TextField(max_length=250)
+    follows = models.ManyToManyField('Profile', related_name='followed_by')
 
 
     def __str__(self):

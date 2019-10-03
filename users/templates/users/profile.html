@@ -9,13 +9,19 @@
             <div class="media-body">
                 <div class="account-heading">
                     <h2 >{{ user.username }}</h2>
-                    <button type="button"><a href="{% url 'edit_profile' %}">Edit profile</a></button>
+                    {% if request.user == user %}
+                        <button type="button"><a href="{% url 'edit_profile' %}">Edit profile</a></button>
+                    {% elif request.user.profile not in user.profile.followed_by.all %}
+                        <button type="button"><a href="{% url 'edit_profile' %}">Follow</a></button>
+                    {% elif request.user.profile in user.profile.followed_by.all %}
+                        <button type="button"><a href="{% url 'edit_profile' %}">Following</a></button>
+                    {% endif %}
                     <button><i class="fas fa-cog"></i></button>
                 </div>
                 <div class="profile_media">
                     <span class="post_count"> <span class="number_of_posts">{{ user.posts.count }}</span> posts </span>
-                    <a href=""> <span class="number_of_followers" >10m </span> followers</a>
-                    <a href=""> <span class="number_of_follows" >421 </span> follows</a>
+                    <a href=""> <span class="number_of_followers" > {{ user.profile.followed_by.count }}</span> followers</a>
+                    <a href=""> <span class="number_of_follows" > {{ user.profile.follows.count }} </span> follows</a>
 
                 </div>
                 <div class="bio_content">

@@ -36,7 +36,7 @@
             {% endif %}
         </div>
         <div class="engagement">
-            <a href=""><i class="fas fa-heart"></i></a>
+            <a href="{% url 'insta:like_toggle' post.id %}"><i class="fas fa-heart"></i></a>
             <a href="{% url 'insta:post_detail' post.id %}"><i class="far fa-comment"></i></a>
             <a href=""><i class="far fa-share-square"></i></a>
             <a href="" class="fa-bookmarks"><i class="far fa-bookmark"></i></a>
