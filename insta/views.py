@@ -78,6 +78,43 @@ class PostLikeToggle(RedirectView):
                 obj.likes.add(user) 
         return url_ 
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
+class PostLikeAPIToggle(APIView):
+    """
+    View to list all users in the system.
+
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated,]
+
+    def get(self, request,id=None, format=None):
+
+        # id_ = self.kwargs.get("id")
+        obj = get_object_or_404(Post, id=id)
+        url_ = obj.get_absolute_url()
+        user = self.request.user 
+        updated = False 
+        liked = False 
+        if user.is_authenticated:
+            if user in obj.likes.all():
+                liked = False
+                obj.likes.remove(user)
+            else:
+                liked = True
+                obj.likes.add(user) 
+            updated = True
+        data = {
+            "updated" : updated,
+            "liked"   : liked
+        }
+        return Response(data)
+
 # def post_create_view(request):
 #     if request.method == 'POST':
 
