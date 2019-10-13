@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     # path('profile/', user_views.profile, name='profile'),
+    path('api/<int:id>/follows', user_views.ProfileFollowAPIToggle.as_view(), name='follow_profile'),
     path('profile/<str:username>', login_required(user_views.Profile.as_view()), name='user_profile'),
     path('editprofile/', user_views.edit_profile, name='edit_profile'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),

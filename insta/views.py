@@ -76,7 +76,7 @@ class PostLikeToggle(RedirectView):
                 obj.likes.remove(user)
             else:
                 obj.likes.add(user) 
-        return url_ 
+        return url_
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -114,6 +114,8 @@ class PostLikeAPIToggle(APIView):
             "liked"   : liked
         }
         return Response(data)
+
+
 
 # def post_create_view(request):
 #     if request.method == 'POST':

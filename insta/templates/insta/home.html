@@ -1,6 +1,39 @@
 {% extends 'insta/base.html' %}
 {%block title%} Instagrampy {% endblock %}
+<!-- <script>
+    function updateText(btn, newCount){
+        btn.text(newCount)
+    }
+    $(".like-btn").click(function(e){
+    e.preventDefault()
+    var this_ = $(this)
+    var likeUrl = this_.attr("data-href")
+    var likeCount = parseInt(this_.attr("data-likes"))
+    .ajax({
+        url: likeUrl,
+        method: "get",
+        data: {},
+        success: function(data){
+            console.log(data)
+            var NewLikes;
+            if (data.liked){
+                var NewLikes = likeCount + 1
+                updateText(this_, NewLikes)
+                // add one like 
+            } else {
+                var NewLikes = likeCount - 1
+                updateText(this_, NewLikes)
 
+
+                // remove one like 
+            }
+        }, error: function(error){
+            console.log(error)
+            console.log("error")
+        }
+    })
+})
+</script> -->
 {% block content %}
 {% for post in posts %}
     <div class="card">
@@ -36,13 +69,13 @@
             {% endif %}
         </div>
         <div class="engagement">
-            <a href="{% url 'insta:like_api_toggle' post.id %}" class="like-btn" data-href="{% url 'insta:like_api_toggle' post.id %}"><i class="fas fa-heart"></i></a>
+            <a href="{% url 'insta:like_toggle' post.id %}" class="like-btn" data-href="{% url 'insta:like_api_toggle' post.id %}"  data-likes={{post.likes.count}} ><i class="fas fa-heart"></i></a>
             <a href="{% url 'insta:post_detail' post.id %}"><i class="far fa-comment"></i></a>
             <a href=""><i class="far fa-share-square"></i></a>
             <a href="" class="fa-bookmarks"><i class="far fa-bookmark"></i></a>
         </div>
         <div class="likes">
-          <a href="#">{{ post.likes.count }} likes</a>
+          <a href="#" class="likes_count">{{ post.likes.count }} likes</a>
         </div>
         <div class="caption">
             <span><p><a href="{% url 'user_profile' post.author.username %}">{{ post.author }}</a>{{ post.caption | linebreaksbr | truncatechars:60 }}</p></span>

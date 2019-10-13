@@ -5,6 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User 
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm 
 from django.views.generic import DetailView
+
+#for rest frame work 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+
 # Create your views here.
 
 def register(request):
@@ -83,8 +89,6 @@ def edit_profile(request):
     }
 
     return render(request, 'users/edit_profile.html', context)
-
-
 """
 Messages is django.
 
@@ -95,3 +99,39 @@ message.warning
 message.error 
 
 """
+
+class ProfileFollowAPIToggle(APIView):
+    """
+    View to list all users in the system.
+
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated,]
+
+    def get(self, request,id=None, format=None):
+
+        # id_ = self.kwargs.get("id")
+        profile_obj = get_object_or_404(User, id=id)
+        # url_ = profile_obj.get_absolute_url()
+        user = self.request.user 
+        updated = False 
+        follow = False 
+        if user.is_authenticated:
+            if user.profile in profile_obj.profile.followed_by.all():
+                follow = False
+                print(user.profile ,"is un following ", profile_obj.profile)
+                profile_obj.profile.followed_by.remove(user.profile)
+            else:
+                follow = True
+                print(user.profile ,"is following ", profile_obj.profile)
+                profile_obj.profile.followed_by.add(user.profile) 
+            updated = True
+        data = {
+            "updated" : updated,
+            "follow"  : follow,
+            "list"    : profile_obj.profile.followed_by.all().values("name"),
+        }
+        print(data)
+        return Response(data)

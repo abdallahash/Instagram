@@ -1,5 +1,39 @@
 {% extends 'insta/base.html' %}
 {% load crispy_forms_tags %}
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+<!-- <script>
+    $(".follow_button").click(function(e){
+        e.preventDefault() 
+        var thiss_ = $(this)
+        var follow_url = thiss_.attr("follow-href")
+        var follow_count = parseInt(thiss_.attr("data-follow")) | 0 
+        var addfollow = follow_count + 1 
+        var removefollow = follow_count - 1
+        if (follow_url){
+            $.ajax({
+                url: follow_url,
+                method: "get",
+                data: {},
+                success: function(data){
+                    console.log(data)
+                    if (data.follow){
+                        $(".number_of_followers").text(addfollow)
+                        $(".follow_button").text("Following")
+                    } else {
+                        $(".number_of_followers").text(removefollow)
+                        $(".follow_button").text("Follow")
+                    }
+
+                }, error: function(error){
+                console.log(error)
+                console.log("error")}
+
+            })
+        }
+
+    })
+</script> -->
+
 {% block content %}
     <div class="profile_page">
         <div class="media">
@@ -12,9 +46,9 @@
                     {% if request.user == user %}
                         <button type="button"><a href="{% url 'edit_profile' %}">Edit profile</a></button>
                     {% elif request.user.profile not in user.profile.followed_by.all %}
-                        <button type="button"><a href="{% url 'edit_profile' %}">Follow</a></button>
+                        <button type="button"><a class="follow_button" href="{% url 'follow_profile' user.id  %}" follow-href="{% url 'follow_profile' user.id %}" data-follow={{user.profile.followed_by.count}} >Follow</a></button>
                     {% elif request.user.profile in user.profile.followed_by.all %}
-                        <button type="button"><a href="{% url 'edit_profile' %}">Following</a></button>
+                        <button type="button"><a class="follow_button" href="{% url 'follow_profile' user.id %}" follow-href="{% url 'follow_profile' user.id %}" data-follow={{user.profile.followed_by.count}}  >Following</a></button>
                     {% endif %}
                     <button><i class="fas fa-cog"></i></button>
                 </div>
